@@ -66,15 +66,22 @@ const Field = ({
   );
 };
 
+// Track claimed blockIds across all mounted FC instances
+const claimedBlockIds = new Set();
+
 export default function Edit({ attributes, setAttributes }) {
   const [activeViewport, setActiveViewport] = useState("desktop");
   const skipNextSync = useRef(false);
 
-  // Generate blockId on mount (styles are handled by PHP)
+  // Generate or regenerate blockId on mount; claim it for this instance
   useEffect(() => {
-    if (!attributes.blockId) {
-      setAttributes({ blockId: generateBlockId() });
+    let id = attributes.blockId;
+    if (!id || claimedBlockIds.has(id)) {
+      id = generateBlockId();
+      setAttributes({ blockId: id });
     }
+    claimedBlockIds.add(id);
+    return () => claimedBlockIds.delete(id);
   }, []);
 
   // Get/set editor device preview
