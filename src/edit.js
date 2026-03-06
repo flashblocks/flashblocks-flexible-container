@@ -247,7 +247,15 @@ export default function Edit({ attributes, setAttributes }) {
           <ToggleControl
             label={__("Hide on this viewport", "flexible-container")}
             checked={viewportData.display === "none"}
-            onChange={(checked) => updateAttr("display", checked ? "none" : "")}
+            onChange={(checked) => {
+              if (checked) {
+                updateAttr("display", "none");
+              } else if (activeViewport !== "mobile" && getInheritedValue("display") === "none") {
+                updateAttr("display", "block");
+              } else {
+                updateAttr("display", "");
+              }
+            }}
           />
         </PanelBody>
 
