@@ -1,12 +1,11 @@
 .wp-block-flashblocks-flexible-container {
 	outline: 1px dashed #ccc;
-	min-height: 50px;
-	
+
 	&.is-selected {
 		outline-color: #007cba;
 		outline-width: 2px;
 	}
-	
+
 	&:empty::before {
 		content: '';
 		display: block;
@@ -52,11 +51,11 @@
 	align-items: center;
 	flex-wrap: wrap;
 	gap: 8px;
-	
+
 	strong {
 		color: #1e1e1e;
 	}
-	
+
 	.flexible-container-breakpoint {
 		font-family: monospace;
 		font-size: 12px;
@@ -65,7 +64,7 @@
 		padding: 2px 6px;
 		border-radius: 3px;
 	}
-	
+
 	.flexible-container-reset-btn {
 		margin-left: auto;
 		flex-shrink: 0;
@@ -86,6 +85,7 @@
 	}
 
 	.is-inherited {
+
 		.components-text-control__input,
 		.components-select-control__input {
 			background-color: #f0f6fc;
