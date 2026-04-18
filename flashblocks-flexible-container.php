@@ -202,7 +202,7 @@ class Flashblocks_Flexible_Container {
 		}
 
 		if ( $css_output ) {
-			echo '<style id="flashblocks-fc-styles">' . $css_output . '</style>' . PHP_EOL;
+			echo '<style id="flashblocks-fc-styles">' . wp_strip_all_tags( $css_output ) . '</style>' . PHP_EOL;
 		}
 
 		// Clear for next page load.
